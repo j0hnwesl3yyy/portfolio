@@ -1,8 +1,10 @@
 body {
-    /* Set line height to 1.5 times the font size
-       and use the OS’s UI font as the website font */
-    font: 100%/1.5 system-ui;
-  }
+  max-width: 100ch;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+}
+  
 
 img {
     max-width: 300px;
@@ -12,3 +14,135 @@ img {
 }
   
   
+nav {
+  display: flex;
+  margin-bottom: 0px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color:darkblue;
+
+}
+
+nav a {
+  flex: 1;
+  text-decoration: none; 
+  color: inherit;
+  text-align: center;
+  padding: 0.5;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color 0.3s, background-color 0.3s;
+}
+
+
+:root {
+  --color-accent: oklch(60% 40% 300); /* Purple */
+}
+
+nav a:hover {
+  border-bottom-color: var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+}
+
+/*This is for the contact*/
+form {
+  display: grid;
+  gap: 1.5em;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font: inherit;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 1em;
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  grid-column: 1 / -1;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--color-accent);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: oklch(from var(--color-accent) 60% 10% h);
+}
+
+/*This is for the project*/
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  background: #fafafa;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-block: 0.5em 0.25em;
+}
+
+h1 {
+  font-size: 300%;
+}
+
+h2 {
+  font-size: 110; 
+}
+
+body {
+  background-color: 	#aed3a6;
+}
+
+/*This is for the project*/
+.resume-header {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.resume-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.resume-header p {
+  font-size: 1.1rem;
+  color: #333;
+  max-width: 70ch;
+  margin-inline: auto;
+}
+
+

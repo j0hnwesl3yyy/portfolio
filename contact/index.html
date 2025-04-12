@@ -12,24 +12,26 @@
     <a href="../contact/index.html">Contact</a>
     <a href="https://github.com/j0hnwesl3yyy" target="_blank">GitHub</a>
   </nav>
+
   <h1>Contact</h1>
-  <form action="mailto: johnwesleypabalate@icloud.com" method="POST" enctype="text/plain">
-    <label>
-      Email:
-      <input type="email" name="email" required>
-    </label>
-    <br>
-    <label>
-      Subject:
-      <input name="subject" required>
-    </label>
-    <br>
-    <label>
-      Message:
-      <textarea name="body" rows="5" required></textarea>
-    </label>
-    <br>
-    <button>Send</button>
+
+  <form action="mailto:johnwesleypabalate@icloud.com" method="POST" enctype="text/plain">
+    <div class="form-row">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required>
+    </div>
+
+    <div class="form-row">
+      <label for="subject">Subject:</label>
+      <input type="text" name="subject" id="subject" required>
+    </div>
+
+    <div class="form-row">
+      <label for="body">Message:</label>
+      <textarea name="body" id="body" rows="5" required></textarea>
+    </div>
+
+    <button type="submit">Send</button>
   </form>
 </body>
 </html>

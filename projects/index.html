@@ -2,15 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects – John Wesley Pabalate</title>
   <link rel="stylesheet" href="../style.css">
+  <!-- D3.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm"></script>
 </head>
 <body>
 
+  <!-- Projects Title -->
   <h1><span class="projects-title"></span> Projects</h1>
 
-  <div class="projects"></div>
+  <!-- Search Bar -->
+  <input class="searchBar" type="search" aria-label="Search projects" placeholder="🔍 Search projects..." />
 
+  <!-- Pie Chart and Legend Container -->
+  <div class="pie-chart-container">
+    <!-- SVG for Pie Chart -->
+    <svg id="projects-pie-plot" viewBox="0 0 200 200"></svg>
+    <!-- Legend -->
+    <ul class="legend"></ul>
+  </div>
+
+  <!-- Projects Section (Dynamically Rendered) -->
+  <div class="projects">
+    <!-- Dynamically rendered project entries will go here -->
+  </div>
+
+  <!-- D3 Pie Chart Rendering JavaScript -->
   <script type="module" src="projects.js"></script>
 
 </body>

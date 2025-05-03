@@ -281,3 +281,86 @@ h2 {
   font-weight: 400;
   grid-row: 2;
 }
+
+#projects-pie-plot {
+  max-width: 100px;    /* Adjust the size of the pie chart */
+  margin-top: 20px;     /* Adds space between the title and pie chart */
+  margin-bottom: 40px;  /* Adds space between the pie chart and the projects */
+  display: block;
+  margin-left: auto;    /* Centers the pie chart horizontally */
+  margin-right: auto;   /* Centers the pie chart horizontally */
+  overflow: visible;
+}
+.pie-chart-container {
+  display: flex;              /* Use flexbox to align items horizontally */
+  justify-content: center;    /* Centers the pie chart and legend horizontally */
+  align-items: center;        /* Centers the pie chart and legend vertically */
+  gap: 20px;                  /* Space between the pie chart and the legend */
+  margin-top: 10px;           /* Adjust space between title and pie chart */
+  margin-bottom: 40px;        /* Adjust space between pie chart and projects */
+}
+
+/* Pie chart styling */
+#projects-pie-plot {
+  max-width: 200px;           /* Set a max-width for the pie chart */
+  margin-top: 20px;           /* Adds space above the pie chart */
+  margin-bottom: 40px;        /* Adds space below the pie chart */
+  display: block;
+  margin-left: auto;          /* Centers the pie chart horizontally */
+  margin-right: auto;         /* Centers the pie chart horizontally */
+  overflow: visible;          /* Ensures no overflow */
+}
+
+/* Legend styling */
+.legend {
+  display: grid;              /* Use a grid layout for the legend */
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive grid */
+  gap: 10px;                  /* Space between legend items */
+  border: 2px solid #333;     /* Adds a border around the legend */
+  padding: 10px;              /* Adds padding inside the legend */
+  margin-top: 20px;           /* Adds space between pie chart and legend */
+}
+
+/* Legend items styling */
+.legend li {
+  display: flex;              /* Flexbox for aligning the swatch and text */
+  align-items: center;
+  gap: 10px;                  /* Space between the swatch and text */
+  font-size: 0.9rem;          /* Font size adjustment */
+}
+
+/* Legend color swatch styling */
+.legend .swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;         /* Round color swatch */
+  display: inline-block;      /* Ensure swatch is inline */
+}
+
+#projects-pie-plot path:hover {
+  opacity: 0.8; /* Make the hovered slice a bit transparent */
+  transition: opacity 0.3s; /* Smooth transition */
+}
+
+#projects-pie-plot path:hover {
+  filter: brightness(1.2); /* Slightly brighten the hovered wedge */
+}
+
+/* CSS for highlighting the selected wedge */
+.selected {
+  filter: brightness(1.2); /* Slightly brightens the selected wedge */
+}
+
+#projects-pie-plot path[selected] {
+  fill: var(--highlight-color) !important;  /* Highlight color */
+}
+
+.legend li.selected {
+  font-weight: bold;
+  color: var(--highlight-color);  /* Highlighted legend item color */
+}
+
+/* Cursor pointer for clickable wedges */
+path {
+  cursor: pointer;
+}

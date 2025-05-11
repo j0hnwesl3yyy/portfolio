@@ -5,13 +5,13 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-// Navigation links using absolute URLs
+// Navigation links using relative URLs
 const pages = [
-  { url: '/index.html', title: 'Home' },
-  { url: '/projects/index.html', title: 'Projects' },
-  { url: '/contact/index.html', title: 'Contact' },
-  { url: '/cv/index.html', title: 'CV' },
-  { url: '/meta/index.html', title: 'Meta' },
+  { url: 'index.html', title: 'Home' },
+  { url: 'projects/index.html', title: 'Projects' },
+  { url: 'contact/index.html', title: 'Contact' },
+  { url: 'cv/index.html', title: 'CV' },
+  { url: 'meta/index.html', title: 'Meta' },
   { url: 'https://github.com/j0hnwesl3yyy', title: 'GitHub' }
 ];
 
@@ -25,9 +25,9 @@ for (let p of pages) {
   a.textContent = p.title;
 
   // Mark current page as active
-  const linkPath = new URL(p.url, location.origin).pathname;
+  const linkPath = new URL(p.url, location.href).pathname;
   const currentPath = location.pathname;
-  a.classList.toggle('current', currentPath === linkPath);
+  a.classList.toggle('current', currentPath.endsWith(linkPath));
 
   // Open external links in new tab
   a.toggleAttribute('target', a.host !== location.host);

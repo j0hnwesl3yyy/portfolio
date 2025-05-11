@@ -9,6 +9,9 @@ function $$(selector, context = document) {
 const pages = [
   { url: '', title: 'Home' },
   { url: 'projects/', title: 'Projects' },
+  { url: 'contact/', title: 'Contact' },
+  { url: 'cv/', title: 'CV' },
+  { url: 'meta/', title: 'Meta' },
   { url: 'https://github.com/j0hnwesl3yyy', title: 'GitHub' }
 ];
 
@@ -20,7 +23,11 @@ const nav = document.createElement('nav');
 document.body.prepend(nav);
 
 for (let p of pages) {
-  const url = new URL(p.url, BASE_PATH).toString();
+  let url = p.url;
+  if (!url.startsWith("http")) {
+    url = BASE_PATH + url;
+  }
+
   const a = document.createElement('a');
   a.href = url;
   a.textContent = p.title;
@@ -29,7 +36,6 @@ for (let p of pages) {
   nav.append(a);
 }
 
-// Theme Selector
 document.body.insertAdjacentHTML(
   'afterbegin',
   `

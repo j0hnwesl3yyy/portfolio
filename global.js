@@ -5,36 +5,31 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-// ✅ Navigation links using relative paths with ./ for GitHub Pages
+// Navigation
 const pages = [
-  { url: './index.html', title: 'Home' },
-  { url: './projects/index.html', title: 'Projects' },
-  { url: './contact/index.html', title: 'Contact' },
-  { url: './cv/index.html', title: 'CV' },
-  { url: './meta/index.html', title: 'Meta' },
+  { url: '', title: 'Home' },
+  { url: 'projects/', title: 'Projects' },
   { url: 'https://github.com/j0hnwesl3yyy', title: 'GitHub' }
 ];
 
-// Create nav element and inject
+const BASE_PATH = location.hostname.includes('localhost') || location.hostname.includes('127.0.0.1')
+  ? '/'
+  : '/portfolio/';
+
 const nav = document.createElement('nav');
 document.body.prepend(nav);
 
 for (let p of pages) {
+  const url = new URL(p.url, BASE_PATH).toString();
   const a = document.createElement('a');
-  a.href = p.url;
+  a.href = url;
   a.textContent = p.title;
-
-  // Mark current page as active
-  const linkPath = new URL(p.url, location.href).pathname;
-  const currentPath = location.pathname;
-  a.classList.toggle('current', currentPath.endsWith(linkPath));
-
-  // Open external links in new tab
-  a.toggleAttribute('target', a.host !== location.host);
+  a.classList.toggle('current', a.host === location.host && a.pathname === location.pathname);
+  a.toggleAttribute("target", a.host !== location.host);
   nav.append(a);
 }
 
-// Theme selector (light/dark/auto)
+// Theme Selector
 document.body.insertAdjacentHTML(
   'afterbegin',
   `
@@ -52,19 +47,16 @@ document.body.insertAdjacentHTML(
 const themeSelect = document.getElementById('theme-select');
 const root = document.documentElement;
 
-// Load saved or default theme
 const savedTheme = localStorage.getItem('theme') || 'auto';
 themeSelect.value = savedTheme;
 applyTheme(savedTheme);
 
-// Change listener
 themeSelect.addEventListener('change', () => {
   const selected = themeSelect.value;
   localStorage.setItem('theme', selected);
   applyTheme(selected);
 });
 
-// Apply theme to <html>
 function applyTheme(mode) {
   if (mode === 'auto') {
     root.removeAttribute('data-theme');
@@ -73,7 +65,7 @@ function applyTheme(mode) {
   }
 }
 
-// JSON fetch utility
+// Exported: JSON fetcher
 export async function fetchJSON(url) {
   try {
     const response = await fetch(url);
@@ -84,7 +76,7 @@ export async function fetchJSON(url) {
   }
 }
 
-// GitHub API fetch
+// Exported: GitHub API fetch
 export async function fetchGithubData(username) {
   try {
     const response = await fetch(`https://api.github.com/users/${username}`);
@@ -95,7 +87,7 @@ export async function fetchGithubData(username) {
   }
 }
 
-// Render projects
+// Exported: Render projects
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
   if (!Array.isArray(projects)) {
     console.error('Invalid projects array:', projects);

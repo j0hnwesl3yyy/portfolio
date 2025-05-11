@@ -5,13 +5,13 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-// Navigation links using relative URLs
+// ✅ Navigation links using relative paths with ./ for GitHub Pages
 const pages = [
-  { url: 'index.html', title: 'Home' },
-  { url: 'projects/index.html', title: 'Projects' },
-  { url: 'contact/index.html', title: 'Contact' },
-  { url: 'cv/index.html', title: 'CV' },
-  { url: 'meta/index.html', title: 'Meta' },
+  { url: './index.html', title: 'Home' },
+  { url: './projects/index.html', title: 'Projects' },
+  { url: './contact/index.html', title: 'Contact' },
+  { url: './cv/index.html', title: 'CV' },
+  { url: './meta/index.html', title: 'Meta' },
   { url: 'https://github.com/j0hnwesl3yyy', title: 'GitHub' }
 ];
 

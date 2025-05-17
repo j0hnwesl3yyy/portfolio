@@ -1,9 +1,10 @@
 [
     {
-        "title": "Lorem ipsum dolor sit",
-        "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        "title": "Boston: Bike Traffic Geospatial Analysis",
+        "year": 2025,
+        "url": "https://j0hnwesl3yyy.github.io/boston-bike-traffic-/",
+        "screenshot": "images/boston_bike_project.png",
+        "description": "Interactive Mapbox-GL + D3 map of Bluebikes station flow by time of day."
     },
     {
         "title": "Sed ut perspiciatis unde",

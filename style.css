@@ -490,3 +490,12 @@ circle.selected {
     stroke-dashoffset: -8;
   }
 }
+
+body {
+  /* 
+    url(...) → path to your PNG (relative to style.css)
+    16 16     → the “hot-spot” coordinates (x y) inside the image
+    auto      → fallback cursor
+  */
+  cursor: url("images/pochacco.png") 32 32, auto;
+}

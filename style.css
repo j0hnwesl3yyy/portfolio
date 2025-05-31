@@ -1,16 +1,17 @@
+/*-------------------------------------
+  Global color & theme
+-------------------------------------*/
 :root {
   --color-accent: oklch(60% 40% 300);
   --border-color: oklch(50% 10% 200 / 40%);
 }
 
-:root[data-theme="light"] {
-  color-scheme: light;
-}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"]  { color-scheme: dark; }
 
-:root[data-theme="dark"] {
-  color-scheme: dark;
-}
-
+/*-------------------------------------
+  Body & overall layout
+-------------------------------------*/
 body {
   max-width: 100ch;
   margin-inline: auto;
@@ -26,12 +27,14 @@ img {
   margin: 1em auto;
 }
 
+/*-------------------------------------
+  Navigation (unchanged)
+-------------------------------------*/
 nav {
   display: flex;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   border-bottom: 2px solid var(--border-color);
 }
-
 nav a {
   flex: 1;
   text-decoration: none;
@@ -41,17 +44,18 @@ nav a {
   border-bottom: 2px solid transparent;
   transition: border-bottom-color 0.3s, background-color 0.3s;
 }
-
 nav a:hover {
   border-bottom-color: var(--color-accent);
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
-
 nav a.current {
   font-weight: bold;
   border-bottom-color: var(--color-accent);
 }
 
+/*-------------------------------------
+  Forms (unchanged)
+-------------------------------------*/
 form {
   display: grid;
   gap: 1.5em;
@@ -60,18 +64,13 @@ form {
   padding: 1rem;
   font: inherit;
 }
-
 .form-row {
   display: grid;
   grid-template-columns: 120px 1fr;
   align-items: center;
   gap: 1em;
 }
-
-label {
-  font-weight: bold;
-}
-
+label { font-weight: bold; }
 input,
 textarea {
   width: 100%;
@@ -81,11 +80,7 @@ textarea {
   border-radius: 4px;
   font: inherit;
 }
-
-textarea {
-  resize: vertical;
-}
-
+textarea { resize: vertical; }
 button {
   grid-column: 1 / -1;
   width: 100%;
@@ -98,11 +93,13 @@ button {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 button:hover {
   background-color: oklch(from var(--color-accent) 60% 10% h);
 }
 
+/*-------------------------------------
+  Project cards (unchanged)
+-------------------------------------*/
 .projects article {
   display: grid;
   grid-template-rows: subgrid;
@@ -115,33 +112,30 @@ button:hover {
   transition: transform 0.2s;
 }
 
+/*-------------------------------------
+  Headings
+-------------------------------------*/
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
   margin-block: 0.5em 0.25em;
   text-align: center;
 }
+h1 { font-size: 300%; }
+h2 { font-size: 110%; }
 
-h1 {
-  font-size: 300%;
-}
-
-h2 {
-  font-size: 110%;
-}
-
+/*-------------------------------------
+  Resume header (unchanged)
+-------------------------------------*/
 .resume-header {
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
 }
-
 .resume-header h1 {
   font-size: 2.5rem;
   font-weight: bold;
-  text-align: center;
 }
-
 .resume-header p {
   font-size: 1.1rem;
   color: #333;
@@ -149,99 +143,31 @@ h2 {
   margin-inline: auto;
 }
 
-:root[data-theme="light"] body {
-  background-color: white;
-  color: black;
-}
-
-:root[data-theme="light"] nav {
-  background-color: white;
-  --border-color: oklch(50% 10% 200 / 40%);
-}
-
-:root[data-theme="light"] nav a {
-  color: black;
-}
-
-:root[data-theme="light"] nav a:hover {
-  background-color: color-mix(in oklch, var(--color-accent), white 85%);
-}
-
+/*-------------------------------------
+  Light / Dark variant overrides
+-------------------------------------*/
+:root[data-theme="light"] body                 { background: white; color: black; }
+:root[data-theme="light"] nav                  { background: white; }
+:root[data-theme="light"] nav a:hover          { background-color: color-mix(in oklch, var(--color-accent), white 85%); }
 :root[data-theme="light"] form,
 :root[data-theme="light"] input,
 :root[data-theme="light"] textarea,
-:root[data-theme="light"] .projects article {
-  background-color: white;
-  color: black;
-}
+:root[data-theme="light"] .projects article    { background-color: white; color: black; }
+:root[data-theme="light"] .resume-header p     { color: #333; }
 
-:root[data-theme="light"] .resume-header p {
-  color: #333;
-}
-
-:root[data-theme="light"] .color-scheme {
-  background-color: rgba(255, 255, 255, 0.85);
-  color: black;
-}
-
-:root[data-theme="light"] .color-scheme select {
-  background: white;
-  color: black;
-  border-color: #aaa;
-}
-
-:root[data-theme="dark"] body {
-  background-color: oklch(20% 3% 250);
-  color: oklch(95% 0% 0);
-}
-
-:root[data-theme="dark"] nav {
-  background-color: oklch(15% 2% 250);
-  --border-color: oklch(70% 10% 300 / 30%);
-}
-
-:root[data-theme="dark"] nav a {
-  color: oklch(95% 0% 0);
-}
-
-:root[data-theme="dark"] nav a:hover {
-  background-color: color-mix(in oklch, var(--color-accent), canvas 70%);
-}
-
-:root[data-theme="dark"] form {
-  background-color: oklch(25% 4% 240);
-  border-radius: 10px;
-  border: 1px solid oklch(50% 5% 240 / 40%);
-}
-
+:root[data-theme="dark"] body                  { background: oklch(20% 3% 250); color: oklch(95% 0% 0); }
+:root[data-theme="dark"] nav                   { background: oklch(15% 2% 250); }
+:root[data-theme="dark"] nav a                 { color: oklch(95% 0% 0); }
+:root[data-theme="dark"] nav a:hover           { background-color: color-mix(in oklch, var(--color-accent), canvas 70%); }
+:root[data-theme="dark"] form                  { background-color: oklch(25% 4% 240); border: 1px solid oklch(50% 5% 240 / 40%); border-radius: 10px; }
 :root[data-theme="dark"] input,
-:root[data-theme="dark"] textarea {
-  background-color: oklch(10% 2% 250);
-  color: oklch(95% 0% 0);
-  border-color: oklch(50% 5% 240 / 40%);
-}
+:root[data-theme="dark"] textarea              { background-color: oklch(10% 2% 250); color: oklch(95% 0% 0); border-color: oklch(50% 5% 240 / 40%); }
+:root[data-theme="dark"] .projects article     { background: oklch(25% 4% 240); color: oklch(95% 0% 0); border-color: oklch(50% 5% 240 / 40%); }
+:root[data-theme="dark"] .resume-header p      { color: oklch(90% 0% 0); }
 
-:root[data-theme="dark"] .projects article {
-  background: oklch(25% 4% 240);
-  color: oklch(95% 0% 0);
-  border-color: oklch(50% 5% 240 / 40%);
-}
-
-:root[data-theme="dark"] .resume-header p {
-  color: oklch(90% 0% 0);
-}
-
-:root[data-theme="dark"] .color-scheme {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: oklch(95% 0% 0);
-}
-
-:root[data-theme="dark"] .color-scheme select {
-  background: black;
-  color: white;
-  border-color: oklch(60% 5% 300);
-}
-
+/*-------------------------------------
+  Color-scheme picker (optional)
+-------------------------------------*/
 .color-scheme {
   position: fixed;
   top: 1rem;
@@ -252,7 +178,6 @@ h2 {
   border-radius: 6px;
   font-family: inherit;
 }
-
 .color-scheme select {
   margin-left: 0.5em;
   padding: 0.25em 0.4em;
@@ -261,6 +186,9 @@ h2 {
   border: 1px solid #aaa;
 }
 
+/*-------------------------------------
+  GitHub stats grid (unused here)
+-------------------------------------*/
 .github-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -268,103 +196,12 @@ h2 {
   margin: 2em 0;
   font-family: sans-serif;
 }
+.github-stats dt { font-weight: bold; color: #666; font-size: 0.85rem; }
+.github-stats dd { margin: 0; font-size: 2rem; grid-row: 2; }
 
-.github-stats dt {
-  font-weight: bold;
-  color: #666;
-  font-size: 0.85rem;
-}
-
-.github-stats dd {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: 400;
-  grid-row: 2;
-}
-
-#projects-pie-plot {
-  max-width: 100px;    /* Adjust the size of the pie chart */
-  margin-top: 20px;     /* Adds space between the title and pie chart */
-  margin-bottom: 40px;  /* Adds space between the pie chart and the projects */
-  display: block;
-  margin-left: auto;    /* Centers the pie chart horizontally */
-  margin-right: auto;   /* Centers the pie chart horizontally */
-  overflow: visible;
-}
-.pie-chart-container {
-  display: flex;              /* Use flexbox to align items horizontally */
-  justify-content: center;    /* Centers the pie chart and legend horizontally */
-  align-items: center;        /* Centers the pie chart and legend vertically */
-  gap: 20px;                  /* Space between the pie chart and the legend */
-  margin-top: 10px;           /* Adjust space between title and pie chart */
-  margin-bottom: 40px;        /* Adjust space between pie chart and projects */
-}
-
-/* Pie chart styling */
-#projects-pie-plot {
-  max-width: 200px;           /* Set a max-width for the pie chart */
-  margin-top: 20px;           /* Adds space above the pie chart */
-  margin-bottom: 40px;        /* Adds space below the pie chart */
-  display: block;
-  margin-left: auto;          /* Centers the pie chart horizontally */
-  margin-right: auto;         /* Centers the pie chart horizontally */
-  overflow: visible;          /* Ensures no overflow */
-}
-
-/* Legend styling */
-.legend {
-  display: grid;              /* Use a grid layout for the legend */
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive grid */
-  gap: 10px;                  /* Space between legend items */
-  border: 2px solid #333;     /* Adds a border around the legend */
-  padding: 10px;              /* Adds padding inside the legend */
-  margin-top: 20px;           /* Adds space between pie chart and legend */
-}
-
-/* Legend items styling */
-.legend li {
-  display: flex;              /* Flexbox for aligning the swatch and text */
-  align-items: center;
-  gap: 10px;                  /* Space between the swatch and text */
-  font-size: 0.9rem;          /* Font size adjustment */
-}
-
-/* Legend color swatch styling */
-.legend .swatch {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;         /* Round color swatch */
-  display: inline-block;      /* Ensure swatch is inline */
-}
-
-#projects-pie-plot path:hover {
-  opacity: 0.8; /* Make the hovered slice a bit transparent */
-  transition: opacity 0.3s; /* Smooth transition */
-}
-
-#projects-pie-plot path:hover {
-  filter: brightness(1.2); /* Slightly brighten the hovered wedge */
-}
-
-/* CSS for highlighting the selected wedge */
-.selected {
-  filter: brightness(1.2); /* Slightly brightens the selected wedge */
-}
-
-#projects-pie-plot path[selected] {
-  fill: var(--highlight-color) !important;  /* Highlight color */
-}
-
-.legend li.selected {
-  font-weight: bold;
-  color: var(--highlight-color);  /* Highlighted legend item color */
-}
-
-/* Cursor pointer for clickable wedges */
-path {
-  cursor: pointer;
-}
-
+/*-------------------------------------
+  Stats card
+-------------------------------------*/
 .stats-card {
   background: #fff;
   padding: 2rem 2rem 1.5rem;
@@ -373,7 +210,6 @@ path {
   max-width: 960px;
   margin: 2rem auto;
 }
-
 .stats-title {
   font-size: 1.25rem;
   font-weight: bold;
@@ -382,21 +218,18 @@ path {
   padding-bottom: 0.5rem;
   text-align: center;
 }
-
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 2rem 1.5rem;
   text-align: center;
 }
-
 .stats dt {
   font-size: 0.75rem;
   text-transform: uppercase;
   color: #666;
   margin-bottom: 0.25rem;
 }
-
 .stats dd {
   font-size: 1.75rem;
   font-weight: 600;
@@ -404,7 +237,6 @@ path {
   color: #111;
   line-height: 1.2;
 }
-
 .stats dd small {
   font-size: 0.8rem;
   color: #666;
@@ -412,17 +244,15 @@ path {
   margin-top: 0.25rem;
 }
 
-.gridlines line {
-  stroke: #ccc;
-  stroke-opacity: 0.3;
-  shape-rendering: crispEdges;
-}
+/*-------------------------------------
+  Scatter-plot gridlines
+-------------------------------------*/
+.gridlines line { stroke: #ccc; stroke-opacity: 0.3; shape-rendering: crispEdges; }
+.gridlines path { display: none; }
 
-.gridlines path {
-  display: none;
-}
-
-/* Tooltip layout */
+/*-------------------------------------
+  Tooltip styling
+-------------------------------------*/
 dl.info {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -435,48 +265,33 @@ dl.info {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(6px);
   max-width: 280px;
+  position: fixed;
   z-index: 20;
   pointer-events: none;
-  position: fixed;
-  transition-duration: 500ms;
-  transition-property: opacity, visibility;
+  transition: opacity 500ms, visibility 500ms;
 }
+dl.info dt { font-weight: bold; color: #555; }
+dl.info dd { margin: 0; color: #222; }
+dl.info[hidden]:not(:hover, :focus-within) { opacity: 0; visibility: hidden; }
+.tooltip { top: 1em; left: 1em; }
 
-dl.info dt {
-  font-weight: bold;
-  color: #555;
-}
-
-dl.info dd {
-  margin: 0;
-  color: #222;
-}
-
-dl.info[hidden]:not(:hover, :focus-within) {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.tooltip {
-  top: 1em;
-  left: 1em;
-}
-
-/* Dot animation */
+/*-------------------------------------
+  Scatter-plot circles
+-------------------------------------*/
 circle {
-  transition: 200ms;
+  transition: r 200ms ease, transform 200ms ease;
   transform-origin: center;
   transform-box: fill-box;
+  @starting-style {
+    r: 0;
+  }
 }
+circle:hover    { transform: scale(1.5); }
+circle.selected { fill: #ff6b6b; }
 
-circle:hover {
-  transform: scale(1.5);
-}
-
-circle.selected {
-  fill: #ff6b6b;
-}
-
+/*-------------------------------------
+  Brush rectangle
+-------------------------------------*/
 .selection {
   fill-opacity: 0.1;
   stroke: black;
@@ -484,18 +299,116 @@ circle.selected {
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
 }
-
 @keyframes marching-ants {
-  to {
-    stroke-dashoffset: -8;
-  }
+  to { stroke-dashoffset: -8; }
 }
 
-body {
-  /* 
-    url(...) → path to your PNG (relative to style.css)
-    16 16     → the “hot-spot” coordinates (x y) inside the image
-    auto      → fallback cursor
+/*-------------------------------------
+  Unit-dot file visualization
+-------------------------------------*/
+#files {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 0.25rem 1rem;
+  max-width: 960px;
+  margin: 1rem auto 2rem auto;
+}
+#files > div {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+#files dt {
+  grid-column: 1;
+  margin: 0;
+}
+#files dt code {
+  font-family: monospace;
+}
+#files dt small {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.65;
+}
+#files dd {
+  grid-column: 2;
+  margin: 0;
+  padding-top: 0.6em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+}
+.loc {
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: var(--color, steelblue);
+  border-radius: 50%;
+}
+
+/*-------------------------------------
+  MAKE ONLY THE FILE-SIZE SECTION STICKY
+-------------------------------------*/
+#files-section {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: white;
+  /* If you want extra padding above/below, uncomment:
+     padding-top: 0.5rem;
+     padding-bottom: 0.5rem;
   */
-  cursor: url("images/pochacco.png") 32 32, auto;
+}
+
+/*-------------------------------------
+  SCROLLYTELLING LAYOUT (commit → scatter)
+-------------------------------------*/
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem; /* space below the file-size section */
+}
+#scrolly-1 > * {
+  flex: 1;
+}
+
+#scatter-story {
+  position: relative;
+  max-width: 40ch;
+}
+
+/*-------------------------------------
+  MAKE SCATTER-PLOT STICKY (UNDER FILE-SIZE)
+  → UPDATED so it sits even lower (20rem)
+-------------------------------------*/
+#scatter-plot {
+  position: sticky;
+  top: 25rem; /* ↑ increased from 16rem to push it further down */
+  z-index: 18;
+  background-color: white;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#scatter-plot h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#scatter-plot svg {
+  width: 100%;
+  height: 100%;
+}
+
+/*-------------------------------------
+  Narrative “step” text spacing
+-------------------------------------*/
+#scatter-story .step {
+  padding-bottom: 60vh;    /* keeps scatter pinned while reading */
+  font-size: 0.95rem;
+  line-height: 1.5;
 }

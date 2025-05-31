@@ -3,53 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <title>Meta</title>
+
+  <!-- Main stylesheet (adjust path if needed) -->
   <link rel="stylesheet" href="../style.css" />
+
+  <!-- Scrollama (for scrollytelling) -->
+  <script type="module" src="https://unpkg.com/scrollama@3.2.0"></script>
 </head>
+
 <body>
-
-  <!-- Navigation (optional: uncomment if needed) -->
-  <!-- <nav>
-    <a href="../index.html">Home</a>
-    <a class="current" href="index.html">Meta</a>
-  </nav> -->
-
+  <!-- ─────────── Header & Intro ─────────── -->
   <h1>Meta</h1>
   <p>This page includes stats about the code of this website.</p>
 
-  <!-- Commit summary -->
+  <!-- ───────────────────────────────────────────
+       SUMMARY CARD (scrolls away normally)
+  ─────────────────────────────────────────── -->
   <div id="stats"></div>
 
-  <!-- Scatterplot -->
-  <h2 style="text-align: center; margin-top: 3rem;">Commits by time of day</h2>
-  <div id="chart"></div>
+  <!-- ───────────────────────────────────────────
+       FILE‐SIZE VISUALIZATION
+       (will stick to top of viewport when you scroll)
+  ─────────────────────────────────────────── -->
+  <div id="files-section">
+    <h2 style="text-align: center; margin-top: 1rem;">
+      Size of each file (in LOC)
+    </h2>
+    <dl id="files"></dl>
+  </div>
+  <!-- /#files-section -->
 
-  <!-- Selected commits count -->
-  <p id="selection-count" style="text-align: center; font-weight: bold;">No commits selected</p>
+  <!-- ───────────────────────────────────────────
+       SCROLLYTELLING SECTION (commits → scatter)
+       Left: narrative steps (scroll normally)
+       Right: sticky scatter‐plot under the file‐size
+  ─────────────────────────────────────────── -->
+  <div id="scrolly-1">
+    <!-- Left column: “step” blocks (auto‐injected by main.js) -->
+    <div id="scatter-story">
+      <!-- main.js will inject <div class="step">…</div> here -->
+    </div>
 
-  <!-- Language breakdown -->
-  <dl id="language-breakdown" class="stats"></dl>
+    <!-- Right column: FIXED scatter‐plot + tooltip -->
+    <div id="scatter-plot">
+      <h2 style="text-align: center; margin-top: 1rem;">
+        Commits by time of day
+      </h2>
+      <div id="chart"></div>
 
-  <!-- Tooltip -->
-  <dl id="commit-tooltip" class="info tooltip" hidden>
-    <dt>Commit</dt>
-    <dd><a href="" id="commit-link" target="_blank"></a></dd>
+    
+      <dl id="language-breakdown" class="stats"></dl>
 
-    <dt>Date</dt>
-    <dd id="commit-date"></dd>
+      <!-- Tooltip (hidden until used) -->
+      <dl id="commit-tooltip" class="info tooltip" hidden>
+        <dt>Commit</dt><dd><a id="commit-link" href="" target="_blank"></a></dd>
+        <dt>Date</dt><dd id="commit-date"></dd>
+        <dt>Time</dt><dd id="commit-time-tooltip"></dd>
+        <dt>Author</dt><dd id="commit-author"></dd>
+        <dt>Lines Edited</dt><dd id="commit-lines"></dd>
+      </dl>
+    </div>
+    <!-- /#scatter-plot -->
+  </div>
+  <!-- /#scrolly-1 -->
 
-    <dt>Time</dt>
-    <dd id="commit-time"></dd>
 
-    <dt>Author</dt>
-    <dd id="commit-author"></dd>
-
-    <dt>Lines Edited</dt>
-    <dd id="commit-lines"></dd>
-  </dl>
-
-  <!-- Scripts -->
+  <!-- JavaScript entry points -->
   <script type="module" src="main.js"></script>
   <script type="module" src="../global.js"></script>
-
 </body>
 </html>
